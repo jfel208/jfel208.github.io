@@ -1,0 +1,76 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Tarjetas de Crédito y Débito</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Simulador de Tarjetas de Crédito y Débito</h1>
+        <h2>Realizado por Juan Felipe Mazo y Samuel Clavijo (10°6)</h2>
+        
+        <button class="button credito" onclick="mostrarSimulacion('credito')">Simular Tarjeta de Crédito</button>
+        <button class="button debito" onclick="mostrarSimulacion('debito')">Simular Tarjeta de Débito</button>
+        <button class="button teorico" onclick="mostrarMarcoTeorico()">Marco Teórico</button>
+
+        <!-- Formulario Simulación de Crédito -->
+        <div id="formCredito" class="form-simulacion">
+            <h3>Simulación de Tarjeta de Crédito (MasterCard Clásica)</h3>
+            <p>Tasa de interés mensual: 2.1% | Tasa de interés efectiva anual: 26%</p>
+            <label for="credito-monto">Valor de la Compra (COP):</label>
+            <input type="number" id="credito-monto" placeholder="Ej: $ 1.000.000" min="10000" max="4900000" required>
+            
+            <label for="credito-cuotas">Número de Cuotas (máx. 36):</label>
+            <input type="number" id="credito-cuotas" placeholder="Ej: 12" min="1" max="36" required>
+            
+            <button class="submit" onclick="procesarCredito()">Realizar Simulación</button>
+        </div>
+
+        <!-- Formulario Simulación de Débito -->
+        <div id="formDebito" class="form-simulacion">
+            <h3>Simulación de Tarjeta de Débito</h3>
+            <label for="debito-presupuesto">Presupuesto Mensual (COP):</label>
+            <input type="number" id="debito-presupuesto" placeholder="Ej: $ 1.000.000" min="10000" max="4900000" required>
+
+            <div id="gastos-container">
+                <h4>Gastos Mensuales</h4>
+                <label for="gasto">Agregar Gasto (COP):</label>
+                <input type="number" id="gasto" placeholder="Ej: $ 100.000" min="1" required>
+                
+                <label for="categoria">Categoría:</label>
+                <select id="categoria">
+                    <option value="comida">Comida</option>
+                    <option value="entretenimiento">Entretenimiento</option>
+                    <option value="transporte">Transporte</option>
+                </select>
+
+                <button class="submit" onclick="agregarGasto()">Agregar Gasto</button>
+                <button class="submit" onclick="totalDinero()">Total de Dinero Restante</button>
+            </div>
+            
+            <div id="lista-gastos"></div>
+        </div>
+
+        <!-- Marco Teórico -->
+        <div id="marcoTeorico" class="marco-teorico">
+            <h3>Introducción a las tarjetas de crédito y débito</h3>
+            <p>Las tarjetas de crédito y débito son instrumentos financieros esenciales en la economía moderna. Las tarjetas de crédito permiten a los usuarios realizar compras con un crédito prestado por una entidad bancaria, mientras que las tarjetas de débito permiten acceder directamente a los fondos disponibles en una cuenta bancaria. Surgieron en el siglo XX como una forma conveniente de pago y se han expandido globalmente.</p>
+            
+            <h3>Diferencias entre tarjetas de crédito y débito</h3>
+            <p>Las principales diferencias entre las tarjetas de crédito y débito incluyen las tasas de interés y los plazos de pago. Mientras que las tarjetas de crédito pueden cobrar intereses si no se paga el saldo completo al final de cada ciclo, las tarjetas de débito no tienen esta característica porque el dinero proviene directamente de la cuenta del titular.</p>
+
+            <h3>Uso responsable de las tarjetas</h3>
+            <p>Una de las cosas a tener en cuenta al momento de utilizar las tarjetas de manera responsable es evitar sobreendeudarse. Con una tarjeta de crédito, se debe gestionar el límite de crédito, realizar pagos mínimos y evitar cargos por intereses excesivos. Por otro lado, tarjetas de débito deben usarse para transacciones donde se quiera un control más estricto del gasto, ya que el dinero se reduce directamente de la cuenta bancaria. </p>
+
+        </div>
+
+        <div id="resultado"></div>
+    </div>
+
+    <script src="scripts/main.js"></script>
+
+</body>
+</html>
